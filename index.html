@@ -1,0 +1,126 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>SUPERX | نظام إدارة شركات الشحن</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <header class="hero">
+      <div class="brand">
+        <div class="logo">S</div>
+        <div>
+          <h1>SUPERX</h1>
+          <p>شريكك في الشحن والتجارة والإعلان</p>
+        </div>
+      </div>
+      <p class="subtitle">سيستم متكامل لإدارة شركة الشحن في مكان واحد</p>
+      <nav class="roles-nav" id="rolesNav">
+        <button data-role="admin" class="active">لوحة الإدارة</button>
+        <button data-role="merchant">لوحة التاجر</button>
+        <button data-role="customer">واجهة العميل</button>
+        <button data-role="courier">واجهة المندوب</button>
+      </nav>
+    </header>
+
+    <main>
+      <section id="admin" class="panel active">
+        <h2>لوحة تحكم الإدارة</h2>
+        <div class="stats-grid" id="adminStats"></div>
+
+        <div class="card">
+          <h3>إدارة الطلبات والمرتجعات</h3>
+          <div class="filters">
+            <select id="statusFilter">
+              <option value="all">كل الحالات</option>
+              <option value="new">جديد</option>
+              <option value="in_transit">قيد التوصيل</option>
+              <option value="delivered">تم التسليم</option>
+              <option value="failed">فشل التسليم</option>
+              <option value="returned">مرتجع</option>
+            </select>
+          </div>
+          <div class="table-wrap">
+            <table>
+              <thead>
+                <tr>
+                  <th>رقم الشحنة</th>
+                  <th>التاجر</th>
+                  <th>العميل</th>
+                  <th>المندوب</th>
+                  <th>المدينة</th>
+                  <th>الحالة</th>
+                  <th>قيمة COD</th>
+                </tr>
+              </thead>
+              <tbody id="adminShipments"></tbody>
+            </table>
+          </div>
+        </div>
+      </section>
+
+      <section id="merchant" class="panel">
+        <h2>لوحة التاجر</h2>
+        <div class="card">
+          <h3>إنشاء شحنة جديدة</h3>
+          <form id="shipmentForm" class="form-grid">
+            <input required name="merchant" placeholder="اسم المتجر" value="متجر السريع" />
+            <input required name="customer" placeholder="اسم العميل" />
+            <input required name="phone" placeholder="رقم الهاتف" />
+            <input required name="city" placeholder="المدينة" />
+            <input required name="address" placeholder="العنوان" />
+            <input required name="cod" type="number" min="1" placeholder="مبلغ التحصيل" />
+            <button type="submit">حفظ الشحنة</button>
+          </form>
+        </div>
+
+        <div class="card">
+          <h3>شحنات التاجر</h3>
+          <div class="table-wrap">
+            <table>
+              <thead>
+                <tr>
+                  <th>رقم الشحنة</th>
+                  <th>العميل</th>
+                  <th>الهاتف</th>
+                  <th>الحالة</th>
+                  <th>التحديث الأخير</th>
+                </tr>
+              </thead>
+              <tbody id="merchantShipments"></tbody>
+            </table>
+          </div>
+        </div>
+      </section>
+
+      <section id="customer" class="panel">
+        <h2>تتبع الشحنة</h2>
+        <div class="card tracking-card">
+          <form id="trackingForm" class="track-form">
+            <input required id="trackingInput" placeholder="أدخل رقم التتبع (مثال: SX1001)" />
+            <button type="submit">تتبع الآن</button>
+          </form>
+          <div id="trackingResult" class="tracking-result">أدخل رقم الشحنة لمعرفة الحالة.</div>
+        </div>
+      </section>
+
+      <section id="courier" class="panel">
+        <h2>واجهة المندوب</h2>
+        <div class="card">
+          <h3>مهام اليوم</h3>
+          <div id="courierTasks" class="tasks"></div>
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      <p>© 2026 SUPERX — نظام إدارة شامل لشركات الشحن.</p>
+    </footer>
+
+    <script src="app.js"></script>
+  </body>
+</html>
